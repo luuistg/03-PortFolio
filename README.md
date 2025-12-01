@@ -2,7 +2,8 @@
 
 Soy **Luis Tortosa González**, desarrollador junior de Murcia, España.  
 Actualmente finalizando mi formación en Ingeniería Informática.
-Este reposiotrio forma parte de una serie de proyectos con los que quiero familiarizarme con React y aprender.
+Este reposiotrio forma parte de una serie de proyectos con los que quiero
+familiarizarme con React y aprender.
 
 ---
 
