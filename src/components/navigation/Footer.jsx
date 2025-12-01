@@ -1,5 +1,5 @@
 import FooterLink from "./FooterLink"
-import { footerLinks } from "../icons/IconsSVG"
+import { footerLinks } from "../../icons/IconsSVG"
 
 export function Footer() {
     return (
