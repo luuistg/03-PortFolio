@@ -1,16 +1,47 @@
-# React + Vite
+# Portfolio de Luis Tortosa González
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Soy **Luis Tortosa González**, desarrollador junior de Murcia, España.  
+Actualmente finalizando mi formación en Ingeniería Informática.
+Este reposiotrio forma parte de una serie de proyectos con los que quiero familiarizarme con React y aprender.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologías utilizadas
 
-## React Compiler
+- **React** – Librería para construir interfaces modernas y dinámicas.
+- **Tailwind CSS v4** – Estilos rápidos y consistentes con utilidades.
+- **JavaScript / JSX** – Lógica y componentes reutilizables.
+- **HTML semántico** – Accesibilidad y buenas prácticas.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## Características del proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Diseño **responsivo** y adaptado a distintos dispositivos.
+- Uso de **gradientes, glassmorphism y efectos avanzados** con Tailwind.
+- Componentes reutilizables como `Badge` para enlaces y etiquetas.
+- Navegación con **scroll suave** y header reactivo al desplazamiento.
+- Código limpio y documentado para fácil mantenimiento.
+
+---
+
+## Vista previa
+
+*(Agrega aquí una captura de pantalla o gif del proyecto)*
+
+---
+
+## Instalación y uso
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/luuistg/03-PortFolio
+
+# Entrar en la carpeta
+cd 03-Portfolio
+
+# Instalar dependencias
+npm install
+
+# Ejecutar en modo desarrollo
+npm run dev
