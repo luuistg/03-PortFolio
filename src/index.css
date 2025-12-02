@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "@midudev/tailwind-animations";
+
 
 :root {
   font-family: 'JetBrains Mono Variable', monospace,system-ui, Avenir, Helvetica, Arial, sans-serif;

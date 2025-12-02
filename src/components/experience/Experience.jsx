@@ -11,7 +11,7 @@ export function Experience(){
             </div>
 
 
-            <ol class="relative border-s border-default">   
+            <ol className="relative border-s border-default">   
 
                 {experienceInfo.slice().reverse().map((item, index) => (
                     <ExperienceItem 

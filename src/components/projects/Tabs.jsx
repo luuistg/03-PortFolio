@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ProjectCard } from "./ProjectCard.jsx";
 import { CertificatesCard } from "./CertificatesCard.jsx";
 import { TechStackCard } from "./TechStackCard.jsx";
+import projects from "../../util/projectsInfo.js";
 
 const tabs = ["Proyectos", "Certificaciones", "Stack"];
 
@@ -16,13 +17,13 @@ export function Tabs({ onTabChange }) {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4">
-        <div className="flex justify-center gap-4 mb-8">
+    <div className="w-full max-w-screen-xl mx-auto px-6">
+        <div className="flex justify-center gap-4 mb-4">
         {tabs.map((tab) => (
             <button
                 key={tab}
                 onClick={() => handleTabClick(tab)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all
+                className={`px-6 py-3 rounded-md text-sm font-medium transition-all
                 ${
                     activeTab === tab
                     ? "bg-indigo-500 text-white shadow-md scale-105"
@@ -35,9 +36,21 @@ export function Tabs({ onTabChange }) {
         </div>
 
         <div className="space-y-6">
-            {activeTab === "Proyectos" && <ProjectCard />}
-            {activeTab === "Certificaciones" && <CertificatesCard />}
-            {activeTab === "Stack" && <TechStackCard />}
+            {activeTab === "Proyectos" && 
+                <div 
+                    key={activeTab}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-zoom-in animate-duration-slow">
+                    {projects.map((project, index) => (
+                        <ProjectCard key={index} project={project} className={`view-animate-single animate-zoom-in duration-700 delay-200`} />
+                    ))}
+                </div>
+            }
+            {activeTab === "Certificaciones" && 
+                <div className="flex justify-center"><CertificatesCard /></div>
+            }
+            {activeTab === "Stack" && 
+                <div className="flex justify-center"><TechStackCard /></div>
+            }
         </div>
     </div>
   );
