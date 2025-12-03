@@ -28,7 +28,11 @@ familiarizarme con React y aprender.
 
 ## Vista previa
 
-*(Agrega aquí una captura de pantalla o gif del proyecto)*
+<img width="1436" height="757" alt="image" src="https://github.com/user-attachments/assets/34d8d017-3d5a-4cc2-a63d-d3adf7560052" />
+
+
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.1-blue?logo=tailwindcss&logoColor=white)
 
 ---
 
