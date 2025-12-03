@@ -1,7 +1,13 @@
 
+import { Typewriter } from 'react-simple-typewriter'
+import { useInView } from 'react-intersection-observer'
+
 export function ExperienceItem({date, title, place, description, placeLink, moreInfoLink}) {
+
+    const { ref, inView } = useInView({ triggerOnce: true })
+
     return(
-        <li className="mb-10 ms-4 relative">
+        <li ref={ref} className="mb-10 ms-4 relative view-animate-single animate-blink ">
 
             <div className="absolute w-3 h-3 bg-indigo-400 rounded-full mt-1.5 -left-5.5 border border-indigo-600"></div>
 
@@ -18,7 +24,19 @@ export function ExperienceItem({date, title, place, description, placeLink, more
                 href={placeLink}
 
                 >
-                {place}
+                {inView && (
+                    <Typewriter
+                    words={[place]}
+                    loop={1}
+                    cursor
+                    cursorStyle="|"
+                    cursorBlinking={true}
+                    cursorColor="indigo"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1000}
+                />
+                )}
                 </a>
             </h3>
 

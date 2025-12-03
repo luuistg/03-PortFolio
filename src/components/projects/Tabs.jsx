@@ -49,7 +49,7 @@ export function Tabs({ onTabChange }) {
                 <div className="flex justify-center"><CertificatesCard /></div>
             }
             {activeTab === "Stack" && 
-                <div className="flex justify-center"><TechStackCard /></div>
+                <div className="max-w-4xl mx-auto px-4 view-animate-single animate-zoom-in duration-700 delay-200"><TechStackCard /></div>
             }
         </div>
     </div>
