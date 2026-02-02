@@ -16,8 +16,8 @@
     "@midudev/tailwind-animations": "^0.2.0",
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "react-intersection-observer": "^10.0.0",
     "react-simple-typewriter": "^5.0.1"
   },

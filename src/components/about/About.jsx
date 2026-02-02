@@ -3,11 +3,11 @@ import { Badge } from "../shared/Badge"
 export function About(){
     return(
         
-        <section id="about" className="max-w-4xl mx-auto pt-60 pb-32 px-6">
+        <section id="about" className="w-full pt-74 pb-54 px-6 ">
             <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-1 space-y-6 animate-slide-in-right">
                     <h1 className="text-5xl font-bold text-gray-100 flex items-center animate-duration-slow">
-                        Hey, soy Luis
+                        Hola, soy Luis
                         <Badge
                         text="En Formación"
                         className="bg-yellow-400/10 text-green-400 ring-green-500/20 text-sm"
@@ -15,9 +15,9 @@ export function About(){
                     </h1>
 
                     <h2 className="text-lg text-gray-200 leading-relaxed">
-                        Soy un desarrollador Junior, de Murcia, España.  
-                        En la recta final de mi formación con ganas de 
-                        aprender y crecer en este mundo del desarrollo.
+                        Apunto de terminar mi formación, en Murcia, España.  
+                        Soy un desarrollador full stack con ganas de 
+                        aprender y crecer en este mundo.
                     </h2>
 
                     <div className="flex flex-wrap gap-4">

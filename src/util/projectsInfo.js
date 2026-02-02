@@ -1,21 +1,28 @@
+import dad1Img from "../assets/projectsImg/dad1.webp";
+import appMovileImg from "../assets/projectsImg/appMovile.webp";
+import dad2Img from "../assets/projectsImg/dad2.webp";
+
 const projects = [
     {
-        url: "https://example.com",
-        image: "https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&ar=16%3A9&crop=faces&fit=crop",
-        title: "Example Project",
-        description: "This is an example project description."
+        url: "https://github.com/luuistg/DAD1-GlobalAPP",
+        image: dad1Img,
+        title: "FTP con Sockets",
+        description: "Servidor y Cliente FTP por linea de comandos.",
+        technologies: [{ name: "Java", color: "bg-red-400/40 text-red-100 ring-red-500/20" }]
     },
     {
-        url: "https://example.com",
-        image: "https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&ar=16%3A9&crop=faces&fit=crop",
-        title: "Example Project",
-        description: "This is an example project description."
+        url: "https://github.com/luuistg/APP_Moviles_IOS",
+        image: appMovileImg,
+        title: "APP Móvil IOS",
+        description: "Aplicación móvil para gestión de vehículos",
+        technologies: [{ name: "Swift", color: "bg-orange-400/40 text-orange-100 ring-orange-500/20" }]
     },
     {
-        url: "https://example.com",
-        image: "https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&ar=16%3A9&crop=faces&fit=crop",
-        title: "Example Project",
-        description: "This is an example project description."
+        url: "https://github.com/luuistg/Dad2Practica2",
+        image: dad2Img,
+        title: "API REST con Java EE",
+        description: "API RESTful con Jakarta EE, consumida con JQUERY.",
+        technologies: [{ name: "Java", color: "bg-red-400/40 text-red-100 ring-red-500/20" }, { name: "JS", color: "bg-yellow-400/40 text-yellow-100 ring-yellow-500/20" }]
     }
 ];
 

@@ -3,7 +3,7 @@ import experienceInfo from "../../util/experienceInfo.js"
 
 export function Experience(){
     return(
-        <section id="experience" className="max-w-2xl mx-auto py-28 px-6 space-y-6">
+        <section id="experience" className="w-full py-28 px-6 space-y-6">
             <div className="border-l-4 border-indigo-500 pl-3 mb-6">
                 <span className="text-indigo-400 font-semibold uppercase tracking-wide">
                     Experiencia

@@ -22,10 +22,10 @@ export function Header(){
                             : "bg-transparent"
                             }`}>
 
-            <NavLink to="#about">About</NavLink>
-            <NavLink to="#experience">Experience</NavLink>
-            <NavLink to="#projects">Projects</NavLink>
-            <NavLink to="#contact">Contact</NavLink>
+            <NavLink to="#about">Sobre</NavLink>
+            <NavLink to="#experience">Experiencia</NavLink>
+            <NavLink to="#projects">Proyectos</NavLink>
+            <NavLink to="#contact">Contacto</NavLink>
         </header>
     )
 }
