@@ -3,19 +3,19 @@ const certifications = [
     name: "Java SE 7 Programmer",
     issuer: "Oracle",
     date: "2025-11-24",
-    link: "/certifications/POO.pdf"
+    link: "certifications/POO.pdf"
   },
   {
     name: "Redes empresariales, Seguridad y Automatización",
     issuer: "Cisco Networking Academy",
     date: "2025-11-21",
-    link: "/certifications/TAC.pdf"
+    link: "certifications/TAC.pdf"
   },
   {
     name: "Desarrollo de Unidades de Programa en PL/SQL",
     issuer: "Cisco Networking Academy",
     date: "2024-11-08",
-    link: "/certifications/SGI.pdf"
+    link: "certifications/SGI.pdf"
   }
 ];
 
