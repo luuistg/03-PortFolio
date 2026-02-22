@@ -22,7 +22,7 @@ export function About(){
 
                     <div className="flex flex-wrap gap-4">
                         <Badge
-                        text="tortosagonzalezluis@gmail.com"
+                        text="Gmail"
                         className="bg-indigo-400/10 text-indigo-400 ring-indigo-500/20 text-sm
                         transition-all duration-200 ease-out
                         hover:bg-indigo-500/30 hover:text-white 

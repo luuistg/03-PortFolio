@@ -71,7 +71,7 @@ export function Contact() {
                 
                 {/* Eliminamos el <p> y usamos un div contenedor */}
                 <div className="w-full max-w-3xl"> 
-                    <form className="space-y-4" onSubmit={handleSubmit}>
+                    <form className="space-y-8" onSubmit={handleSubmit}>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input 
