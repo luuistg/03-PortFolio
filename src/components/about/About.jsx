@@ -1,4 +1,5 @@
 import { Badge } from "../shared/Badge"
+import cvImage from "../../assets/fotoCV.webp"
 
 export function About(){
     return(
@@ -44,9 +45,9 @@ export function About(){
 
                 <div className="flex-shrink-0">
                     <img
-                        src="https://img.freepik.com/vector-premium/icono-simbolo-sombra-perfil-usuario-ilustracion-vector-aislado_34480-596.jpg"
+                        src={cvImage}
                         alt="miFoto"
-                        className="rounded-full shadow-lg border border-indigo-500 h-64 w-64 animate-flip-x animate-delay-100"
+                        className="rounded-full object-cover shadow-lg border border-indigo-500 h-64 w-64 animate-flip-x animate-delay-100"
                     />
                 </div>
             </div>
