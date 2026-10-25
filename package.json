@@ -10,15 +10,12 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@gsap/react": "^2.1.2",
     "@midudev/tailwind-animations": "^0.2.0",
-    "@mui/icons-material": "^7.3.5",
-    "@mui/material": "^7.3.5",
+    "gsap": "^3.15.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-intersection-observer": "^10.0.0",
