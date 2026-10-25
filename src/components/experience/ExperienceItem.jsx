@@ -1,10 +1,17 @@
-
+import { useEffect, useState } from 'react'
 import { Typewriter } from 'react-simple-typewriter'
 import { useInView } from 'react-intersection-observer'
 
-export function ExperienceItem({date, title, place, description, placeLink, moreInfoLink}) {
+export function ExperienceItem({date, title, place, description, placeLink, moreInfoLink, delayMs = 0}) {
 
     const { ref, inView } = useInView({ triggerOnce: true })
+    const [startTyping, setStartTyping] = useState(false)
+
+    useEffect(() => {
+        if (!inView) return
+        const timer = setTimeout(() => setStartTyping(true), delayMs)
+        return () => clearTimeout(timer)
+    }, [inView, delayMs])
 
     return(
         <li ref={ref} className="mb-10 ms-4 relative view-animate-single animate-blink ">
@@ -18,20 +25,20 @@ export function ExperienceItem({date, title, place, description, placeLink, more
             <h3 className="text-lg font-semibold text-gray-100 my-2">
                 {title}{" "}
                 <a
-                className="text-indigo-400 hover:text-indigo-300 underline"
+                className="text-amber-400 hover:text-amber-300 underline"
                 rel="noopener noreferrer"
                 target="_blank"
                 href={placeLink}
 
                 >
-                {inView && (
+                {startTyping && (
                     <Typewriter
                     words={[place]}
                     loop={1}
                     cursor
                     cursorStyle="|"
                     cursorBlinking={true}
-                    cursorColor="indigo"
+                    cursorColor="#f59e0b"
                     typeSpeed={70}
                     deleteSpeed={50}
                     delaySpeed={1000}
@@ -49,10 +56,10 @@ export function ExperienceItem({date, title, place, description, placeLink, more
                 href={moreInfoLink}
                 rel="noopener noreferrer"
                 target="_blank"
-                className="inline-flex items-center text-gray-200 bg-indigo-500/20 
-                        border border-indigo-500/30 hover:bg-indigo-500/30 
-                        hover:text-white focus:ring-4 focus:ring-indigo-600/40 
-                        shadow-xs font-medium leading-5 rounded-md text-sm 
+                className="inline-flex items-center text-gray-200 bg-indigo-500/20
+                        border border-indigo-500/30 hover:bg-indigo-500/30
+                        hover:text-white focus:ring-4 focus:ring-indigo-600/40
+                        shadow-xs font-medium leading-5 rounded-md text-sm
                         px-4 py-2.5 focus:outline-none transition-colors"
             >
                 Saber más
