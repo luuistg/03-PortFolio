@@ -7,22 +7,22 @@ const projects = [
         url: "https://github.com/luuistg/DAD1-GlobalAPP",
         image: dad1Img,
         title: "FTP con Sockets",
-        description: "Servidor y Cliente FTP por linea de comandos.",
+        description: "Servidor y Cliente FTP Like, por linea de comandos, desarrollado en Java utilizando sockets y Threads.",
         technologies: [{ name: "Java", color: "bg-red-400/40 text-red-100 ring-red-500/20" }]
     },
     {
         url: "https://github.com/luuistg/APP_Moviles_IOS",
         image: appMovileImg,
         title: "APP Móvil IOS",
-        description: "Aplicación móvil para gestión de vehículos",
+        description: "Aplicación móvil desarrollada con Swift para gestión de vehículos personales.",
         technologies: [{ name: "Swift", color: "bg-orange-400/40 text-orange-100 ring-orange-500/20" }]
     },
     {
         url: "https://github.com/luuistg/UniversityPlanner",
         image: upImg,
         title: "API REST con .NET",
-        description: "API RESTful con .NET y Entity Framework.",
-        technologies: [{ name: "C#", color: "bg-blue-400/40 text-blue-100 ring-blue-500/20" }, { name: "JS", color: "bg-yellow-400/40 text-yellow-100 ring-yellow-500/20" }]
+        description: "API RESTful con .NET y Entity Framework, consumida por frontend React para la planificación universitaria.",
+        technologies: [{ name: "C#", color: "bg-blue-400/40 text-blue-100 ring-blue-500/20" }, { name: "JS", color: "bg-yellow-400/40 text-yellow-100 ring-yellow-500/20" }, { name: "React", color: "bg-cyan-400/40 text-cyan-100 ring-cyan-500/20" }]
     }
 ];
 
