@@ -2,18 +2,15 @@ import React, { useState } from 'react';
 
 const formId = import.meta.env.VITE_FORMSPREE_ID;
 
-const validate = (formData, setErrors) => {
-    let newErrors = {};
-    if (!formData.name) newErrors.name = true;
-    if (!formData.message || formData.message.length < 10) newErrors.message = true;
-    if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = true;
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // true si no hay errores
+const validate = (formData) => {
+    const errors = {};
+    if (!formData.name.trim()) errors.name = true;
+    if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = true;
+    if (!formData.message || formData.message.trim().length < 10) errors.message = true;
+    return errors;
 };
 
 export function Contact() {
-    // 1. Movemos los estados DENTRO del componente
     const [formData, setFormData] = useState({
         name: '',
         surname: '',
@@ -25,21 +22,29 @@ export function Contact() {
     const [status, setStatus] = useState('idle');
     const [errors, setErrors] = useState({});
 
-    // 2. Movemos la lógica de manejo de inputs DENTRO
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+        setFormData((prev) => ({ ...prev, [name]: value }));
+        if (errors[name]) {
+            setErrors((prev) => ({ ...prev, [name]: false }));
+        }
+        if (status === 'invalid' || status === 'error') {
+            setStatus('idle');
+        }
     };
 
-    // 3. La función de envío también DENTRO para acceder a setStatus y formData directamente
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!validate(formData, setErrors)) return;
+        const newErrors = validate(formData);
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            setStatus('invalid');
+            setTimeout(() => setStatus((s) => (s === 'invalid' ? 'idle' : s)), 4000);
+            return;
+        }
 
+        setErrors({});
         setStatus('sending');
 
         try {
@@ -58,102 +63,116 @@ export function Contact() {
                 setTimeout(() => setStatus('idle'), 5000);
             } else {
                 setStatus('error');
+                setTimeout(() => setStatus('idle'), 5000);
             }
         } catch (error) {
             setStatus('error');
+            setTimeout(() => setStatus('idle'), 5000);
         }
     };
 
+    const inputBase = "w-full bg-transparent border-b-2 px-0 py-3 outline-none transition-colors duration-300 placeholder:text-gray-500";
+    const inputState = (field) =>
+        errors[field]
+            ? "border-red-500 text-red-300 placeholder:text-red-400"
+            : "border-indigo-500/40 text-gray-100 focus:border-amber-400 hover:border-indigo-400";
+
     return (
-        <section id="contact" className="max-w-4xl mx-auto pt-32 pb-10 px-6">
-            <div className="flex flex-col items-center gap-8">
-                <h1 className="text-4xl font-bold text-gray-100">Contacto</h1>
-                
-                {/* Eliminamos el <p> y usamos un div contenedor */}
-                <div className="w-full max-w-3xl"> 
-                    <form className="space-y-8" onSubmit={handleSubmit}>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input 
-                                type="text" 
-                                placeholder="Nombre" 
-                                name="name" 
-                                value={formData.name} 
-                                onChange={handleChange}
-                                className={`w-full bg-transparent border-b-2 px-0 py-3 rounded-none outline-none transition-all duration-300
-                                        ${errors.name 
-                                            ? 'border-red-500 text-red-400' 
-                                            : 'border-indigo-400 text-indigo-400 focus:border-indigo-600 hover:border-indigo-300'
-                                        }`}
-                            />
-                            <input 
-                                type="text" 
-                                placeholder="Apellidos" 
-                                name="surname" 
-                                value={formData.surname} 
-                                onChange={handleChange}
-                                className={`w-full bg-transparent border-b-2 px-0 py-3 rounded-none outline-none transition-all duration-300
-                                        ${errors.surname 
-                                            ? 'border-red-500 text-red-400' 
-                                            : 'border-indigo-400 text-indigo-400 focus:border-indigo-600 hover:border-indigo-300'
-                                        }`} 
-                            />
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input 
-                                type="email" 
-                                placeholder="Correo Electrónico" 
-                                name="email" 
-                                value={formData.email} 
-                                onChange={handleChange}
-                                className={`w-full bg-transparent border-b-2 px-0 py-3 rounded-none outline-none transition-all duration-300
-                                        ${errors.email 
-                                            ? 'border-red-500 text-red-400' 
-                                            : 'border-indigo-400 text-indigo-400 focus:border-indigo-600 hover:border-indigo-300'
-                                        }`} 
-                            />
-                            <div className="relative">
-                                <select 
-                                    name="subject" 
-                                    value={formData.subject} 
-                                    onChange={handleChange}
-                                    className="w-full bg-transparent border-2 rounded-3xl border-indigo-400 px-4 py-3 text-indigo-400 outline-none focus:ring-0 focus:border-indigo-600 hover:border-indigo-300 transition-all duration-300 appearance-none cursor-pointer"
-                                >
-                                    <option value="" disabled className="bg-[#0f0721] text-gray-400">Asunto</option>
-                                    <option value="Contacto" className="bg-[#0f0721] text-white">Contacto</option>
-                                    <option value="Oferta" className="bg-[#0f0721] text-white">Oferta de Empleo</option>
-                                    <option value="Otro" className="bg-[#0f0721] text-white">Otro</option>
-                                </select>
-                                <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-indigo-400 text-xl">⌄</span>
-                            </div>
-                        </div>
-
-                        <div className="w-full">
-                            <textarea 
-                                rows="5" 
-                                name="message" 
-                                value={formData.message} 
-                                onChange={handleChange}
-                                className="w-full px-4 py-3 bg-transparent border rounded-lg border-indigo-400 focus:outline-none transition-all resize-none text-indigo-400 focus:ring-0 focus:border-indigo-600 hover:border-indigo-300 duration-300" 
-                                placeholder="Mensaje"
-                            ></textarea>
-                        </div>
-
-                        <div className="flex justify-end items-center gap-4">
-                            {status === 'success' && <span className="text-green-400 animate-fade-in text-sm">¡Enviado con éxito!</span>}
-                            {status === 'error' && <span className="text-red-400 text-sm">Algo falló...</span>}
-                            
-                            <button 
-                                type="submit" 
-                                disabled={status === 'sending'}
-                                className="inline-flex items-center text-gray-200 bg-indigo-500/20 border border-indigo-500/30 hover:bg-indigo-500/30 hover:text-white focus:ring-4 focus:ring-indigo-600/40 font-medium rounded-md text-sm px-6 py-2.5 transition-all disabled:opacity-50"
-                            >
-                                {status === 'sending' ? 'Enviando...' : 'Enviar'}
-                            </button>
-                        </div>
-                    </form>
+        <section id="contact" className="w-full py-20 md:py-32 px-6">
+            <div className="max-w-4xl mx-auto">
+                <div className="border-l-4 border-amber-400 pl-3 mb-10">
+                    <span className="text-amber-400 font-semibold uppercase tracking-widest text-sm">
+                        Contacto
+                    </span>
                 </div>
+
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-12 leading-tight">
+                    ¿Trabajamos <span className="text-amber-400">juntos</span>?
+                </h2>
+
+                <form className="space-y-10" onSubmit={handleSubmit} noValidate>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Nombre"
+                            value={formData.name}
+                            onChange={handleChange}
+                            className={`${inputBase} ${inputState('name')}`}
+                        />
+                        <input
+                            type="text"
+                            name="surname"
+                            placeholder="Apellidos"
+                            value={formData.surname}
+                            onChange={handleChange}
+                            className={`${inputBase} ${inputState('surname')}`}
+                        />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Correo electrónico"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className={`${inputBase} ${inputState('email')}`}
+                        />
+                        <div className="relative">
+                            <select
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleChange}
+                                className={`${inputBase} ${inputState('subject')} appearance-none cursor-pointer pr-8`}
+                            >
+                                <option value="" disabled className="bg-[#232267] text-gray-400">Asunto</option>
+                                <option value="Contacto" className="bg-[#232267] text-white">Contacto</option>
+                                <option value="Oferta" className="bg-[#232267] text-white">Oferta de Empleo</option>
+                                <option value="Otro" className="bg-[#232267] text-white">Otro</option>
+                            </select>
+                            <span className="pointer-events-none absolute right-0 bottom-3 text-indigo-400 text-lg">⌄</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <textarea
+                            name="message"
+                            rows="5"
+                            placeholder="Cuéntame qué tienes en mente (mínimo 10 caracteres)…"
+                            value={formData.message}
+                            onChange={handleChange}
+                            className={`w-full px-4 py-3 bg-white/[0.04] border focus:outline-none transition-colors duration-300 resize-none placeholder:text-gray-500 ${
+                                errors.message
+                                    ? "border-red-500 text-red-300 placeholder:text-red-400"
+                                    : "border-indigo-500/40 text-gray-100 focus:border-amber-400 hover:border-indigo-400"
+                            }`}
+                        />
+                    </div>
+
+                    <div className="flex items-center justify-between flex-wrap gap-4">
+                        <div className="min-h-[1.5rem] text-sm">
+                            {status === 'invalid' && (
+                                <span className="text-red-400">Revisa los campos marcados.</span>
+                            )}
+                            {status === 'success' && (
+                                <span className="text-amber-400">¡Enviado con éxito!</span>
+                            )}
+                            {status === 'error' && (
+                                <span className="text-red-400">Algo falló, inténtalo de nuevo.</span>
+                            )}
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={status === 'sending'}
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-black font-bold uppercase tracking-wider border-2 border-black hover:bg-amber-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                        >
+                            {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
+                            <span className="text-lg">→</span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </section>
     );
